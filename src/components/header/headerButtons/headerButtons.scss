@@ -1,0 +1,15 @@
+.headerButtons{
+    display: flex;
+    flex-direction: row;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        flex-direction: column;
+        height: auto;
+    }
+
+    @media (min-width: 481px) and (max-width: 768px){
+        flex-direction: row;
+        height: auto; 
+        
+    }
+}

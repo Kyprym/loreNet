@@ -1,0 +1,16 @@
+.headerButtons {
+  display: flex;
+  flex-direction: row;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .headerButtons {
+    flex-direction: column;
+    height: auto;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .headerButtons {
+    flex-direction: row;
+    height: auto;
+  }
+}/*# sourceMappingURL=headerButtons.css.map */

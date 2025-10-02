@@ -1,0 +1,411 @@
+@use '../../../varsCSS.scss' as vars;
+
+$darker-background: #1f1f28;
+$border-radius: 4px;
+$max-height: 180px;
+$inputsWidth: 300px; 
+$inputsWidthLowSize:150px;
+$inputsWidt768:$inputsWidth + 200px;
+$primary-color: #272733; 
+$accent-blue: #007BFF; 
+
+$slider-thumb-color: #42A9ED;
+$slider-thumb-border-color: #286690;
+$slider-track-height: 13px;
+$slider-thumb-size: 20px;
+
+
+.custom-dropdown-wrapper {
+    position: relative;
+    width: $inputsWidth;
+    max-width: $inputsWidth;
+    font-size: 16px;
+    margin-bottom: 15px; 
+    @media (min-width: 320px) and (max-width: 480px){
+        max-width: 200px;
+        font-size: 10px;
+    }
+}
+
+.dropdown-header {
+    background-color: vars.$fontWhiteColor;
+    color: vars.$darkBackground;
+    padding: 12px 15px;
+    border-radius: $border-radius;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid transparent; 
+    transition: all 0.2s ease;
+
+    &.is-selected {
+        color: vars.$darkBackground;
+    }
+    
+    &::after {
+        content: ' ';
+        width: 6px;
+        height: 6px;
+        border-right: 2px solid vars.$darkBackground;
+        border-bottom: 2px solid vars.$darkBackground;
+        transform: translateY(-25%) rotate(45deg);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    &.is-open {
+        background-color: vars.$darkBackground;
+        color: vars.$fontWhiteColor;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        
+        &::after {
+            transform: translateY(25%) rotate(-135deg); 
+            border-color: vars.$headerButtonsHoverColor;
+        }
+    }
+}
+
+.dropdown-options-container {
+    position: absolute;
+    width: 100%;
+    max-height: $max-height;
+    overflow-y: auto;
+    background-color: vars.$darkBackground;
+    border-radius: 0 0 $border-radius $border-radius;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $darker-background;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: vars.$headerButtonsHoverColor;
+        border-radius: 4px;
+        border: 2px solid vars.$darkBackground;
+    }
+}
+
+.dropdown-option {
+    color: vars.$fontWhiteColor;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+        background-color: $darker-background;
+        color: vars.$headerButtonsHoverColor;
+    }
+
+    &.is-active {
+        color: vars.$headerButtonsHoverColor;
+        font-weight: bold;
+    }
+}
+
+input::placeholder {
+    color: rgba($primary-color, 0.6); 
+}
+
+.lInput {
+    width: 100%;
+    height: 2.9rem;
+    max-width: $inputsWidth; 
+    color: $primary-color; 
+    padding: 10px;
+    border: 1px solid vars.$darkBackground; 
+    border-radius: $border-radius; 
+    font-size: 16px;
+    margin-bottom: 15px; 
+    box-sizing: border-box; 
+
+    &:focus {
+        border-color: $primary-color;
+        outline: none;
+    }
+    @media (min-width: 320px) and (max-width: 480px){
+        max-width: 200px;
+        font-size: 14px;
+    }
+}
+
+.file-input-wrapper {
+    width: 100%;
+    max-width: $inputsWidth; 
+    font-size: 16px;
+    padding: 10px;
+    border-radius: $border-radius;
+    margin-bottom: 15px;
+    box-sizing: border-box; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: vars.$fontWhiteColor;
+    border: 1px solid vars.$darkBackground;
+    transition: all 0.2s ease-in-out;
+    color: $primary-color; 
+    @media (min-width: 320px) and (max-width: 480px){
+            width: $inputsWidthLowSize + 45px !important;
+       }
+
+
+
+    &:hover,
+    &:focus-within {
+        border-color: $accent-blue; 
+    }
+    
+
+
+}
+
+.file-input-wrapper.is-file-selected {
+    border-color: vars.$darkBackground;
+    background-color: vars.$fontWhiteColor; 
+    box-shadow: none; 
+    
+}
+
+.file-input-content {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+
+    
+
+
+
+}
+
+.file-input-icon {
+    font-size: 1.25rem; 
+    line-height: 1; 
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-input-label {
+    font-size: 16px;
+    font-weight: 500; 
+    color: $primary-color; 
+    text-transform: uppercase; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    min-width: 0; 
+    flex-grow: 1;
+    @media (min-width: 320px) and (max-width: 480px){
+            font-size: 10px;                
+       }
+
+}
+
+.hidden-file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.range-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #FFFFFF; 
+}
+
+.custom-range-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: $slider-track-height; 
+    background: vars.$fontWhiteColor; 
+    border-radius: $border-radius;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    @media (min-width: 481px) and (max-width: 608px) {
+        width: $inputsWidth;
+    }
+    @media (min-width: 609px) and (max-width: 700px) {
+        width: $inputsWidth;
+    }
+    @media (min-width: 701px) and (max-width: 768px) {
+        width: $inputsWidth;
+    }
+
+}
+
+.custom-range-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: $slider-track-height;
+    background: vars.$fontWhiteColor; 
+    border-radius: $border-radius;
+}
+
+.custom-range-slider::-moz-range-track {
+    width: 100%;
+    height: $slider-track-height;
+    background: vars.$fontWhiteColor;
+    border-radius: $border-radius;
+}
+
+.custom-range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: $slider-thumb-size; 
+    height: $slider-thumb-size; 
+    background: $slider-thumb-color; 
+    border: 3px solid $slider-thumb-border-color;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: calc(($slider-track-height - $slider-thumb-size) / 2); 
+}
+
+.custom-range-slider::-moz-range-thumb {
+    width: $slider-thumb-size;
+    height: $slider-thumb-size;
+    background: $slider-thumb-color;
+    border: 3px solid $slider-thumb-border-color;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.inputs-layout {
+    align-items: center;
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @media (min-width: 320px) and (max-width: 480px){
+            padding-top: 1rem;              
+       }
+    @media (min-width: 768px) and (max-width: 840px){
+            margin-top: 1rem; 
+            transform: scale(0.8);
+
+       }
+    @media (min-width: 840px) and (max-width: 1024px){
+            margin-top: 1rem; 
+            transform: scale(0.9);
+
+       }
+}
+
+.top-row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    
+    .custom-dropdown-wrapper,
+    .lInput {
+        flex: 1;
+        margin-bottom: 0;
+        width: $inputsWidth;
+    }
+    @media (min-width: 320px) and (max-width: 480px){
+        flex-direction: column;
+    }
+    @media (min-width: 481px) and (max-width: 608px) {
+        margin-top: -7rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    @media (min-width: 609px) and (max-width: 768px) {
+        margin-top: -7rem;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.bottom-row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    margin-top:15px ;
+    @media (min-width: 320px) and (max-width: 480px){
+        flex-direction: column;
+    }
+    @media (min-width: 481px) and (max-width: 608px) {
+        flex-direction: column;
+        align-items: center;
+    }
+    @media (min-width: 609px) and (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .file-input-wrapper {
+        flex: 1;
+        margin-bottom: 0;
+        width: $inputsWidth;
+    @media (min-width: 320px) and (max-width: 480px){
+        width: $inputsWidthLowSize;
+    }
+    
+
+ 
+    }
+    
+    .range-container {
+        width: calc(#{$inputsWidth} * 2 + 15px) !important;
+        margin-bottom: 25px; 
+        @media (min-width: 320px) and (max-width: 480px){
+                width: $inputsWidthLowSize !important;
+                font-size: 5px;                      
+        }
+        
+        @media (min-width: 481px) and (max-width: 608px) {
+            width: 300px !important;
+        }
+        @media (min-width: 609px) and (max-width: 768px) {
+            width: 300px !important;
+
+        }
+
+
+    }
+}
+
+
+.button {
+    width: 300px;
+    height: 48;
+    opacity: 1;
+    top: 1569.81px;
+    left: 775px;
+    gap: 10px;
+    border-radius: 4px;
+    border-width: 1px;
+    padding-top: 15px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    background: #3E9CDC;
+    color: #FFFFFF;   
+    &:hover {
+        opacity: 0.8;
+    }
+    @media (min-width: 320px) and (max-width: 480px){
+        width: $inputsWidthLowSize + 40px;
+        }
+    @media (min-width: 701px) and (max-width: 768px) {
+        width: $inputsWidth;
+    }
+
+}

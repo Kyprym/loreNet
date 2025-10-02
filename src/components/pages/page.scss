@@ -1,0 +1,15 @@
+.headerImage {
+    width: 100%;
+    height: auto;
+    display: block;
+
+
+    
+    @media (min-width: 320px) and (max-width: 480px){
+       display: none;
+
+    }
+
+  
+
+}

@@ -1,0 +1,43 @@
+.footerContactLink {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .footerContactLink {
+    flex-direction: column;
+    padding-bottom: 1rem;
+    height: auto;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .footerContactLink {
+    flex-direction: column;
+    padding-bottom: 1rem;
+    height: auto;
+  }
+}
+
+.seporator {
+  background-color: #C3C3C3;
+  width: 1px;
+  height: 16px;
+  margin: 0 8px;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .seporator {
+    display: none;
+  }
+}
+@media (min-width: 481px) and (max-width: 890px) {
+  .seporator {
+    display: none;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  color: #C3C3C3;
+}/*# sourceMappingURL=FooterContacts.css.map */

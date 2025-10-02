@@ -1,0 +1,24 @@
+.headerButton {
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: #FFFFFF;
+  font-weight: 100;
+  padding-right: 2rem;
+  transition: 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.headerButton:hover {
+  color: #43ABF0;
+}
+.headerButton--active {
+  color: #43ABF0;
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .headerButton {
+    display: flex;
+    flex-direction: row;
+    padding-right: 1rem;
+    padding-top: 1rem;
+  }
+}/*# sourceMappingURL=headerButton.css.map */
